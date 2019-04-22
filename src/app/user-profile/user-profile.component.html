@@ -1,0 +1,303 @@
+<div class="wrapper">
+    <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(../../assets/img/sidebar-4.jpg)"></div>
+    </div>
+    <div class="main-panel">
+        <app-navbar></app-navbar>
+        <div class="main-content">
+            <h2 align="center" *ngIf="getfranchise !== null">Bem vinido Site do ovo {{ getfranchise.nom}}</h2>
+            <h2 align="center" *ngIf="getfranchise === null">Bem vinido Site do ovo Salvador</h2>
+            <h3 align="center">{{ identity.surname }} {{ identity.name }}</h3>
+            <br>
+            <div class="container-fluid">
+                <div class="row">
+                    <div *ngIf="identity.role === 'admin'" class="col-md-8">
+                        <div class="card">
+                            <div class="card-header card-header-warning">
+                                <h4 class="card-title">
+                                    Adicionar administrador </h4>
+                                <p class="card-category"></p>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert alert-success" *ngIf="status === 'success'">
+                                    Registrated succesfully
+                                    <a [routerLink]="['/dashboard']">Login</a>
+                                </div>
+                                <div class="alert alert-danger" *ngIf="status === 'error'">
+                                    Registration error!
+                                </div>
+                                <form #registerForm="ngForm" (ngSubmit)="onSubmitUser(); registerForm.reset();">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <label class="example-full-width">
+                                                <select class="browser-default custom-select" type="number"  name="f" [(ngModel)]="user.ref_franchise">
+                                                    <option *ngFor="let f of franchises" [value]="f.id" >{{f.nom}}</option>
+                                                </select>
+                                            </label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Username">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Email address" #email="ngModel" [(ngModel)]="user.email" name="email" type="email">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Fist Name" #nom="ngModel" [(ngModel)]="user.nom" name="nom" type="text">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Last Name" #prenom="ngModel" [(ngModel)]="user.prenom" name="prenom" type="text">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Password " type="password" #password="ngModel" [(ngModel)]="user.password" name="password">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Confirm password" type="password">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <!--<div class="row">
+                                        <div class="col-md-12">
+                                                <label class="example-full-width">
+                                                    <select class="browser-default custom-select">
+                                                        <option *ngFor="let f of franchises" [value]="f.id" >{{f.nom}}</option>
+                                                    </select>
+                                                </label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="City" type="text">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Country" type="text">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Postal Code" type="text">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>About Me</label>
+                                            <mat-form-field class="example-full-width">
+                                                <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
+                                            </mat-form-field>
+                                            <!-- <div class="form-group">
+
+                                                <div class="form-group">
+                                                    <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                                                    <textarea class="form-control" rows="5"></textarea>
+                                                </div>
+                                            </div> --
+                                        </div>
+                                    </div> -->
+                                    <button mat-raised-button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-warning pull-right"> Adicionar </button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="identity.role === 'admin'" class="col-md-4">
+                        <div class="card card-profile">
+                            <div class="card-avatar">
+                                <a href="#pablo">
+                                    <img class="img" src="./assets/img/faces/Leo.jpeg" />
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-category text-gray">CEO / Co-Founder</h6>
+                                <h4 class="card-title">Leonardo </h4>
+                                <p class="card-description">
+                                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header card-header-warning">
+                    <h4 class="card-title">
+                        Adicione um funcionário </h4>
+                    <p class="card-category"></p>
+                </div>
+                <div class="card-body">
+                    <form #registerFormEmploye="ngForm" (ngSubmit)="onSubmitEmploye(); registerFormEmploye.reset();">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label class="example-full-width">Franchise
+                                    <select class="browser-default custom-select" type="number"  name="f" [(ngModel)]="employe.ref_franchise">
+                                        <option *ngFor="let f of franchises" [value]="f.id" >{{f.nom}}</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="col-md-5">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="CPF" #cpf="ngModel" [(ngModel)]="employe.cpf" name="cpf" >
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-5">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Nom" #empresa="ngModel" [(ngModel)]="employe.empresa" name="empresa" >
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Email" #email="ngModel" [(ngModel)]="employe.email" name="email" type="email">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Primeiro nome" #primaire="ngModel" [(ngModel)]="employe.primaire" name="primaire" type="text">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Último nome" #secondaire="ngModel" [(ngModel)]="employe.secondaire" name="secondaire"  type="text">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Data de recrutamento " #recrutement="ngModel" [(ngModel)]="employe.recrutement" name="recrutement" type="date">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Endereço" #adresse="ngModel" [(ngModel)]="employe.adresse" name="adresse" type="text">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Cidade" #ville="ngModel" [(ngModel)]="employe.ville" name="ville" type="text">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="País" #pays="ngModel" [(ngModel)]="employe.pays" name="pays" type="text">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="CEP" #cep="ngModel" [(ngModel)]="employe.cep" name="cep" type="text">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <button mat-raised-button type="submit" [disabled]="!registerFormEmploye.form.valid" class="btn btn-warning pull-right">
+                            Adicionar </button>
+                        <div class="clearfix"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="identity.role === 'admin'" class="card">
+            <div class="card-header card-header-warning">
+                <h4 class="card-title">
+                    Adicione uma franquia </h4>
+                <p class="card-category"></p>
+            </div>
+            <div class="card-body">
+                <form #registerFormFranchise="ngForm" (ngSubmit)="onSubmitFranchise(); registerFormFranchise.reset();">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="CNPJ" #cNPJ="ngModel" [(ngModel)]="franchise.cNPJ" name="cNPJ" >
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-5">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Empresa (disabled)" >
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Email" #email="ngModel" [(ngModel)]="franchise.email" name="email" type="email">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="O nome do franquia" #nom="ngModel" [(ngModel)]="franchise.nom" name="nom" type="text">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Tipo do franquia" #type="ngModel" [(ngModel)]="franchise.type" name="type" type="text">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Primeiro nome" #primaire="ngModel" [(ngModel)]="franchise.primaire" name="primaire" type="text">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Último nome" #secondaire="ngModel" [(ngModel)]="franchise.secondaire" name="secondaire" type="text">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Endereço" #adresse="ngModel" [(ngModel)]="franchise.adresse" name="adresse" type="text">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Cidade" #ville="ngModel" [(ngModel)]="franchise.ville" name="ville" type="text">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="País" #pays="ngModel" [(ngModel)]="franchise.pays" name="pays" type="text">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="CEP" #cep="ngModel" [(ngModel)]="franchise.cEP" name="cep" type="text">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="bairro" #quartier="ngModel" [(ngModel)]="franchise.quartier" name="quartier" type="text">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <button mat-raised-button type="submit" [disabled]="!registerFormFranchise.form.valid" class="btn btn-warning pull-right">
+                        Adicionar </button>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

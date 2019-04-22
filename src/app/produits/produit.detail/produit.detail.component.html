@@ -1,0 +1,75 @@
+<div *ngIf="!identity || identity == null">
+  <app-login></app-login>
+</div>
+<div class="wrapper" *ngIf="identity && identity.sub">
+  <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+    <app-sidebar></app-sidebar>
+    <div class="sidebar-background" style="background-image: url(../../../assets/img/sidebar-4.jpg)"></div>
+  </div>
+  <div class="main-panel">
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-plain">
+              <div class="card-header card-header-danger">
+                <h4 class="card-title mt-0"> {{page_title}} </h4>
+                <p class="card-category"> </p>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <div class="loader" *ngIf="loading === 'show'">
+                    <img src="assets/img/loader.gif" />
+                  </div>
+                  <div class="alert alert-success" *ngIf="status_produit === 'success'">
+                    Task Created
+                  </div>
+
+                  <div class="alert alert-danger" *ngIf="status_produit === 'error'">
+                    Task was not created!
+                  </div>
+
+                  <table class="table table-hover">
+                    <tbody><br>
+                    <tr>
+                      <th>ID Product</th>
+                      <td>{{produit.id}}</td>
+                    </tr>
+                    <tr>
+                      <th>Name product</th>
+                      <td>{{produit.nom}}</td>
+                    </tr>
+                    <tr>
+                      <th>Quantity</th>
+                      <td>{{produit.quantite}}</td>
+                    </tr>
+                    <tr>
+                      <th>Entre</th>
+                      <td>{{produit.entre}}></td>
+                    </tr>
+                    <tr>
+                      <th>Value</th>
+                      <td>${{produit.price}}</td>
+                    </tr>
+                    <tr>
+                      <th>Image</th>
+                      <td>
+                        <img src="http://127.0.0.1:8000/uploads/images/{{produit.image}}"  class="tn" width="200" height="200">
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                  <div class="button-container" style="align-items: center">
+                    <button mat-raised-button routerLink="/table-list" class="btn btn-default pull-right">Cancel</button>
+                    <button mat-raised-button  (click)=delete(produit.id) class="btn btn-danger pull-right">Delete</button>
+                    <button mat-raised-button [routerLink]="['/edit_produit',produit.id]" class="btn btn-warning pull-right">Edit</button>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

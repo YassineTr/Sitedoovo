@@ -1,0 +1,202 @@
+<!doctype html>
+<html>
+<head>
+    <base href='/'>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/LogoSDV.png" />
+    <link rel="icon" type="image/png" href="./assets/LogoSDV.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Site do Ovo - O maior e primeiro Clube de Assinatura de ovos do Mundo</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+    <!--     Fonts and icons     -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR-KEY-HERE"></script>
+
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/ammap.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/maps/js/brazilLow.js"></script>
+
+    <!-- amCharts javascript code -->
+    <script type="text/javascript">
+        AmCharts.makeChart("map",{
+            "type": "map",
+
+            "addClassNames": true,
+            "fontSize": 15,
+            "color": "white",
+            "projection": "mercator",
+            "backgroundAlpha": 1,
+            "backgroundColor": "white",
+            "dataProvider": {
+                "map": "brazilLow",
+                "getAreasFromMap": true,
+                "images": [
+
+                ],
+                "areas": [
+                    {
+                        "id": "BR-BA",
+                        "title": "<b> Bahia </b>  <br> (Salvador , Laura de freitas)  <img src=\"https://sitedoovo.com.br/wp-content/uploads/2018/01/icon_sdo3.png\"> ",
+                        "color": "rgba(255,204,0,1)" ,
+                        "url" :"http://localhost:4200/bahia"
+                    },
+                    {
+                        "id": "BR-CE",
+                        "title": "<b> Ceará </b> <br> fortaleza  <br> <img src=\"https://sitedoovo.com.br/wp-content/uploads/2018/01/icon_sdo3.png\"> ",
+                        "color": "rgba(255,204,0,1)",
+                        "url" :"http://localhost:4200/ceara"
+
+                    },
+                    {
+                        "id": "BR-DF",
+                        "title": " <b> Distrito Federal</b> <br> Brasilia e Regiões administrativas <br>  <img src=\"https://sitedoovo.com.br/wp-content/uploads/2018/01/icon_sdo3.png\"> ",
+                        "color": "rgba(255,204,0,1)" ,
+                        "url" :"http://localhost:4200/brasilia"
+
+
+                    },
+                    {
+                        "id": "BR-ES",
+                        "title": "<b> Espirito Santo </b> <br> Vitoria <br> <img src=\"https://sitedoovo.com.br/wp-content/uploads/2018/01/icon_sdo3.png\"> ",
+                        "color": "rgba(255,204,0,1)",
+                        "url" :"http://localhost:4200/es"
+                    },
+                    {
+                        "id": "BR-MA",
+                        "title": "<b> Maranhão </b><br> São Luís <br> <img src=\"https://sitedoovo.com.br/wp-content/uploads/2018/01/icon_sdo3.png\"> ",
+                        "color": "rgba(255,204,0,1)" ,
+                        "url" :"http://localhost:4200/maranho"
+                    },
+                    {
+                        "id": "BR-SC",
+                        "title": "<b> Santa Catarina </b> <br> Joinville <br> <img src=\"https://sitedoovo.com.br/wp-content/uploads/2018/01/icon_sdo3.png\"> ",
+                        "color": "rgba(255,204,0,1)",
+                        "url" :"http://localhost:4200/santa-ca"
+                    },
+                    {
+                        "id": "BR-SP",
+                        "title": "<b> São Paulo </b> <br> (Sampa , São José dos Campos , Campinas ) <br> <img src=\"https://sitedoovo.com.br/wp-content/uploads/2018/01/icon_sdo3.png\"> ",
+                        "color": "rgba(255,204,0,1)" ,
+                        "url" :"http://localhost:4200/saopaulo"
+                    },
+                    {
+                        "id": "BR-PR",
+                        "title": "<b> Paraná </b>  <br> ( Curitiba ) <br>  <img width=\"35\" height=\"43\" src=\"https://sitedoovo.com.br/wp-content/uploads/2018/01/icon_sdo3.png\" class=\"vc_single_image-img attachment-thumbnail\" alt=\"\" srcset=\"https://sitedoovo.com.br/wp-content/uploads/2018/01/icon_sdo3.png 35w, https://sitedoovo.com.br/wp-content/uploads/2018/01/icon_sdo3-16x20.png 16w\" sizes=\"(max-width: 35px) 100vw, 35px\">",
+                        "color": "rgba(255,204,0,1)" ,
+                        "url" :"http://localhost:4200/parana"
+                    }
+                ]
+            },
+            "balloon": {
+                "horizontalPadding": 15,
+                "borderAlpha": 0,
+                "borderThickness": 1,
+                "verticalPadding": 15
+            },
+            "areasSettings": {
+                "color": "rgba(129,129,129,1)",
+                "outlineColor": "rgba(80,80,80,1)",
+                "rollOverOutlineColor": "rgba(80,80,80,1)",
+                "rollOverBrightness": 20,
+                "selectedBrightness": 20,
+                "selectable": true,
+                "unlistedAreasAlpha": 0,
+                "unlistedAreasOutlineAlpha": 0
+            },
+            "imagesSettings": {
+                "alpha": 1,
+                "color": "rgba(129,129,129,1)",
+                "outlineAlpha": 0,
+                "rollOverOutlineAlpha": 0,
+                "outlineColor": "rgba(80,80,80,1)",
+                "rollOverBrightness": 20,
+                "selectedBrightness": 20,
+                "selectable": true
+            },
+            "linesSettings": {
+                "color": "rgba(129,129,129,1)",
+                "selectable": true,
+                "rollOverBrightness": 20,
+                "selectedBrightness": 20
+            },
+            "zoomControl": {
+                "zoomControlEnabled": true,
+                "homeButtonEnabled": false,
+                "panControlEnabled": false,
+                "right": 38,
+                "bottom": 30,
+                "minZoomLevel": 0.25,
+                "gridHeight": 100,
+                "gridAlpha": 0.1,
+                "gridBackgroundAlpha": 0,
+                "gridColor": "#FFFFFF",
+                "draggerAlpha": 1,
+                "buttonCornerRadius": 2
+            }
+        });
+    </script>
+    <!-- FAVICON -->
+    <link rel="shortcut icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Just+Another+Hand" rel="stylesheet">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <!-- Slick Slider CSS -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//unpkg.com/slick-carousel@1.8.1/slick/slick.js"></script>
+
+    <!-- Reset CSS -->
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- The Farm House colors. We have chosen the color Vermilion for this default
+            page. However, you can choose any other color by changing color css file.
+      -->
+    <link rel="stylesheet" type="text/css" href="assets/css/colors/default-vermilion.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/shamrock.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/keylimepie.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/scooter.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/goldengrass.css"> -->
+    <!--[if lt IE 9]>
+    <![endif]-->
+
+
+
+</head>
+<body>
+  <app-root>
+    <div class="loader">
+      <svg class="circular" viewBox="25 25 50 50">
+          <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"></circle>
+      </svg>
+    </div>
+  </app-root>
+  <script type="text/javascript" src="./assets/scroll/js/jquery.nicescroll.min.js"></script>
+  <script type="text/javascript" src="./assets/scroll/js/jquery.nav.js"></script>
+  <script type="text/javascript" src="./assets/scroll/js/jquery.appear.js"></script>
+  <script type="text/javascript" src="./assets/scroll/js/jquery.fitvids.js"></script>
+</body>
+
+
+</html>

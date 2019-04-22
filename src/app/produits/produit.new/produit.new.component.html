@@ -1,0 +1,97 @@
+<div *ngIf="!identity || identity == null">
+  <app-login></app-login>
+</div>
+<div class="wrapper" *ngIf="identity && identity.sub">
+  <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+    <app-sidebar></app-sidebar>
+    <div class="sidebar-background" style="background-image: url(../../../assets/img/sidebar-4.jpg)"></div>
+  </div>
+  <div class="main-panel">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-plain">
+            <div style="margin-left: auto; margin-right: auto"  class="card-header col-md-10 text-center card-header-warning">
+              <h4 class="card-title mt-0"> {{page_title}} </h4>
+              <p class="card-category"> </p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <div class="loader" *ngIf="loading === 'show'">
+                  <img src="assets/img/loader.gif" />
+                </div>
+                <div class="alert alert-success" *ngIf="status_produit === 'success'">
+                  Task Created
+                </div>
+
+                <div class="alert alert-danger" *ngIf="status_produit === 'error'">
+                  Task was not created!
+                </div>
+
+                <form #produitNewForm="ngForm" (ngSubmit)="onSubmit();" class="col-md-12 text-center no-padding">
+
+                  <p>
+                    <label>Nom</label>
+                    <label>
+                      <input type="text" class="form-control" name="nom" #nom="ngModel" [(ngModel)]="produit.nom" required>
+                    </label>
+                    <span *ngIf="!nom.valid && nom.touched">Not nom</span>
+                  </p>
+                  <p>
+                    <label>Frequence</label>
+                    <label>
+                      <input type="text" class="form-control" name="frequence" #frequence="ngModel" [(ngModel)]="produit.frequence" required>
+                    </label>
+                    <span *ngIf="!frequence.valid && frequence.touched">Not frequence</span>
+                  </p>
+                  <p>
+                    <label>entre</label>
+                    <label>
+                      <input type="text" class="form-control" name="entre" #entre="ngModel" [(ngModel)]="produit.entre" required>
+                    </label>
+                    <span *ngIf="!entre.valid && entre.touched">Not entre</span>
+                  </p>
+                  <p>
+                    <label>price</label>
+                    <label>
+                      <input type="text" class="form-control" name="price" #price="ngModel" [(ngModel)]="produit.price" required>
+                    </label>
+                    <span *ngIf="!price.valid && price.touched">Not price</span>
+                  </p>
+                  <p>
+                    <label>quantite</label>
+                    <label>
+                      <input type="text" class="form-control" name="quantite" #quantite="ngModel" [(ngModel)]="produit.quantite" required>
+                    </label>
+                    <span *ngIf="!quantite.valid && quantite.touched">Not quantite</span>
+                  </p>
+                  <p>
+                    <label>Image</label>
+                    <label>
+                      <input type="file" class="form-control" name="image" (change)="upload($event)"  required>
+                    </label>
+                  </p>
+
+                  <!--<p>
+                    <label>Status</label>
+                    <select class="form-control" name="status" #status="ngModel" [(ngModel)]="task.status">
+                      <option value="new">New</option>
+                      <option value="todo">TODO</option>
+                      <option value="finished">Finished</option>
+                    </select>
+                  </p>-->
+
+                  <input type="submit" value="{{page_title}}" name="" class="btn btn-success" [disabled]="!produitNewForm.form.valid">
+
+                </form>
+                <div class="button-container" style="align-items: center">
+                  <button mat-raised-button routerLink="/table-list" class="btn btn-warning pull-right">Cancel</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

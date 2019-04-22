@@ -1,0 +1,207 @@
+<div *ngIf="!identity || identity == null">
+    <app-login></app-login>
+</div>
+<div class="wrapper" *ngIf="identity && identity.sub">
+    <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+        <app-sidebar></app-sidebar>
+        <div class="sidebar-background" style="background-image: url(../../assets/img/sidebar-4.jpg)"></div>
+    </div>
+
+    <div class="main-panel">
+        <app-navbar></app-navbar>
+
+        <div class="main-content">
+
+            <h2 align="center" *ngIf="getfranchise !== null">Bem vinido Site do ovo {{ getfranchise.nom}}</h2>
+            <h2 align="center" *ngIf="getfranchise === null">Bem vinido Site do ovo Salvador</h2>
+
+            <h3 align="center">{{ identity.surname }} {{ identity.name }} </h3>
+            <br>
+
+            <div class="container-fluid">
+
+                <div class="row">
+
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <p class="card-category">Used Space</p>
+                                <h3 class="card-title">15
+                                    <small>P</small>
+                                </h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="fa fa-youtube"></i>
+                                </div>
+                                <p class="card-category">Seguidores</p>
+                                <h3 class="card-title">51</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="fa fa-facebook"></i>
+                                </div>
+                                <p class="card-category">Seguidores</p>
+                                <h3 class="card-title">1K</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="card card-stats">
+                            <div class="card-header card-header-warning card-header-icon">
+                                <div class="card-icon">
+                                    <i class="fa fa-instagram"></i>
+                                </div>
+                                <p class="card-category">Seguidores</p>
+                                <h3 class="card-title">+16K</h3>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card card-chart">
+                            <div class="card-header card-header-warning">
+                                <div class="ct-chart" id="dailySalesChart"></div>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title"> Vendas diárias </h4>
+                                <p class="card-category">
+                                    <span class="text-success"><i class="fa fa-long-arrow-up"></i> 55% </span>
+                                    aumento nas vendas de hoje.</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-chart">
+                            <div class="card-header card-header-warning">
+                                <div class="ct-chart" id="websiteViewsChart"></div>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    Assinaturas de email </h4>
+                                <p class="card-category">Último desempenho da campanha</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card card-chart">
+                            <div class="card-header card-header-warning">
+                                <div class="ct-chart" id="completedTasksChart"></div>
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title">Tarefas concluídas</h4>
+                                <p class="card-category">Último desempenho da campanha</p>
+                            </div>
+                            <div class="card-footer">
+                                <div class="stats">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-warning">
+                                <h4 class="card-title">
+                                    Franchise </h4>
+                                <p class="card-category"></p>
+                            </div>
+                            <div class="card-body table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="text-warning">
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Ville</th>
+                                    <th>Email</th>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let f of franchises">
+                                        <td>{{ f.id}}</td>
+                                        <td>{{ f.nom }}</td>
+                                        <td>{{ f.ville }}</td>
+                                        <td> {{ f.email }} </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-warning">
+                                <h4 class="card-title">
+                                    Funcionários </h4>
+                                <p class="card-category"></p>
+                            </div>
+                            <div class="card-body table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="text-warning">
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Recrutement</th>
+                                    <th>Email</th>
+                                    <th *ngIf="identity.ref_franchise === 0">Franchise</th>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let e of employes">
+                                        <td>{{ e.id }}</td>
+                                        <td>{{ e.empresa }}</td>
+                                        <td>{{ e.recrutement }}</td>
+                                        <td> {{ e.email }} </td>
+                                        <td *ngIf="identity.ref_franchise === 0">{{ getfranchisename(e.ref_franchise) }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,56 @@
+<div class="wrapper">
+  <div class="sidebar" data-color="danger" data-background-color="white" data-image="./assets/img/sidebar-1.jpg">
+    <app-sidebar></app-sidebar>
+    <div class="sidebar-background" style="background-image: url(../../assets/img/sidebar-4.jpg)"></div>
+  </div>
+  <div class="main-panel">
+    <app-navbar></app-navbar>
+    <div class="main-content">
+    <div class="card">
+      <div class="card-header card-header-warning">
+        <h4 class="card-title">
+          Mailing </h4>
+        <p class="card-category"></p>
+      </div>
+      <div class="card-body">
+        <div class="alert alert-success" *ngIf="status === 'success'">
+          Mail sended succesfully
+        </div>
+        <div class="alert alert-danger" *ngIf="status === 'error'">
+          Mail sended error!
+        </div>
+        <form #registerForm="ngForm" (ngSubmit)="onSubmitMail(); registerForm.reset();">
+          <div class="row">
+            <div class="col-md-12"><br>
+            </div>
+            <div class="col-md-4">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="email" #email="ngModel" [(ngModel)]="mail.sender" name="email" >
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12"><br>
+            </div>
+            <div class="col-md-4">
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Subject" #subject="ngModel" [(ngModel)]="mail.subject" name="subject" >
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="content" #content="ngModel" [(ngModel)]="mail.content" name="content" type="text"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+          <button mat-raised-button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-warning pull-right">
+            Adicionar </button>
+          <div class="clearfix"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
